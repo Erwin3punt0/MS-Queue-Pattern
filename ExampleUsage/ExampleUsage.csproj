@@ -43,12 +43,14 @@
   <ItemGroup>
     <Compile Include="MessageProcessor.cs" />
     <Compile Include="Dto\SerializableMessage.cs" />
+    <Compile Include="NonFunctionalCircuitBreaker.cs" />
     <Compile Include="Queues\MainExampleQueue.cs" />
     <Compile Include="Queues\PoisonExampleQueue.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Paths\PoisonExampleQueuePath.cs" />
     <Compile Include="Paths\MainExampleQueuePath.cs" />
     <Compile Include="MessageSender.cs" />
+    <Compile Include="ConsoleLogger.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Queue.Interfaces\Queue.Interfaces.csproj">

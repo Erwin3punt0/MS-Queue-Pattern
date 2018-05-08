@@ -1,4 +1,6 @@
 ﻿using ExampleUsage.Dto;
+using ExampleUsage.Queues;
+using Queue;
 using Queue.Interfaces;
 
 namespace ExampleUsage
@@ -8,12 +10,17 @@ namespace ExampleUsage
         private readonly IMainQueue _mainQueue;
         private readonly IPoisonQueue _poisonQueue;
 
-        public MessageProcessor(
-            IMainQueue mainQueue,
-            IPoisonQueue poisonQueue)
+        public MessageProcessor()
         {
-            _mainQueue = mainQueue;
-            _poisonQueue = poisonQueue;
+            _mainQueue = _mainQueue = new MainExampleQueue(
+                new MessageQueueFactory(),
+                new NonFunctionalCircuitBreaker(),
+                new ConsoleLogger());
+
+            _poisonQueue = new PoisonExampleQueue(
+                new MessageQueueFactory(),
+                new NonFunctionalCircuitBreaker(),
+                new ConsoleLogger());
         }
 
         public void Process()

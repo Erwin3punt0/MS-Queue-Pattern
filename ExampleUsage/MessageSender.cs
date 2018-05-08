@@ -1,4 +1,6 @@
 ﻿using ExampleUsage.Dto;
+using ExampleUsage.Queues;
+using Queue;
 using Queue.Interfaces;
 
 namespace ExampleUsage
@@ -7,9 +9,12 @@ namespace ExampleUsage
     {
         private readonly IMainQueue _mainQueue;
 
-        public MessageSender(IMainQueue mainQueue)
+        public MessageSender()
         {
-            _mainQueue = mainQueue;
+            _mainQueue = new MainExampleQueue(
+                new MessageQueueFactory(),
+                new NonFunctionalCircuitBreaker(),
+                new ConsoleLogger());
         }
 
         public void SendSomeStuff()
